@@ -19,3 +19,13 @@ feature 'Testing form' do
     expect(page).to have_content 'Karlo and Maria - Fight!'
   end
 end
+
+feature 'Hit points' do
+  scenario "displays player's hit points" do
+    visit('/enter-players')
+    fill_in('Player1', with: 'Karlo')
+    fill_in('Player2', with: 'Maria')
+    click_button('Start Battle')
+    expect(page).to have_content 'Maria has 5 hitpoints'
+  end
+end
