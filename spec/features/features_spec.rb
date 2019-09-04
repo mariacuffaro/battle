@@ -12,20 +12,14 @@ feature 'Testing form' do
     page.should have_css('input[name="Player2"]')
   end
   scenario 'players can use the form to input thier names' do
-    visit('/enter-players')
-    fill_in('Player1', with: 'Karlo')
-    fill_in('Player2', with: 'Maria')
-    click_button('Start Battle')
+    sign_in_and_play
     expect(page).to have_content 'Karlo and Maria - Fight!'
   end
 end
 
 feature 'Hit points' do
   scenario "displays player's hit points" do
-    visit('/enter-players')
-    fill_in('Player1', with: 'Karlo')
-    fill_in('Player2', with: 'Maria')
-    click_button('Start Battle')
+    sign_in_and_play
     expect(page).to have_content 'Maria has 5 hitpoints'
   end
 end
